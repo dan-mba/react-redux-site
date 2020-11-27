@@ -20,9 +20,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "coverage": "react-scripts test --coverage --watchAll=false",
-    "eject": "react-scripts eject",
-    "prebuild": "shx rm -rf ../static && shx rm -f ../index.html",
-    "postbuild": "shx cp -r build/index.html build/static .."
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"

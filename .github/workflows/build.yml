@@ -2,10 +2,11 @@ name: Build
 
 on:
   workflow_dispatch:
-  # push:
-  #   branches: [ master ]
-  #   paths:
-  #     - "node_build/**"
+  push:
+    branches: [ master ]
+    paths-ignore:
+      - ".github/**"
+      - "build/**"
 
 jobs:
   build:
@@ -18,14 +19,13 @@ jobs:
         node-version: '12.x'
     - name: Build 
       run: |
-        cd node_build
         npm ci
         npm run build
     - name: Commit files
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-        git add -A static index.html
+        git add -A
         git diff-index --quiet --cached HEAD || git commit -m "Build Action"
     - name: Push changes
       uses: ad-m/github-push-action@master
