@@ -21,6 +21,7 @@ jobs:
       run: |
         npm ci
         npm run build
+        mv build docs
     - name: Commit files
       run: |
         git config --local user.email "action@github.com"
