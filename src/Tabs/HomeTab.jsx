@@ -84,7 +84,7 @@ const HomeTab = ({ classes }) => (
         <Typography variant="body1" className={classes.body} align="center">
           The source code for this site is available&nbsp;
           <Link
-            href="https://github.com/dan-mba/dan-mba.github.io"
+            href="https://github.com/dan-mba/react-redux-site"
             variant="inherit"
             underline="always"
             target="_blank"

@@ -7,7 +7,7 @@
  */
 
 import React from 'react';
-import { HashRouter as Router, Route } from 'react-router-dom';
+import { HashRouter as Router, Route, Routes } from 'react-router-dom';
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core';
 import NavHeader from './NavHeader';
 import HomeTab from './Tabs/HomeTab';
@@ -52,11 +52,13 @@ const App = () => (
     <Router>
       <div>
         <NavHeader />
-        <Route exact path="/" component={HomeTab} />
-        <Route path="/experience" component={WorkTab} />
-        <Route path="/education" component={SchoolTab} />
-        <Route path="/code" component={CodeTab} />
-        <Route path="/contact" component={ContactTab} />
+        <Routes>
+          <Route exact path="/" element={<HomeTab />} />
+          <Route path="/experience" element={<WorkTab />} />
+          <Route path="/education" element={<SchoolTab />} />
+          <Route path="/code" element={<CodeTab />} />
+          <Route path="/contact" element={<ContactTab />} />
+        </Routes>
       </div>
     </Router>
   </MuiThemeProvider>
