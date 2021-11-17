@@ -7,8 +7,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Grid, Card, CardMedia, CardContent, CardActions, Chip, Link, Typography, withStyles }
-  from '@material-ui/core';
+import { Grid, Card, CardMedia, CardContent, CardActions, Chip, Link, Typography, withStyles } from '@material-ui/core';
 import mapImg from '../img/map.png';
 
 const styles = {

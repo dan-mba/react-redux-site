@@ -1,7 +1,7 @@
 /* eslint react/jsx-filename-extension: "off" */
 import React from 'react';
 import Enzyme, { mount } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
+import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
 import { CodeTab } from './CodeTab';
 import LIBRARIES from '../config/libraries';
 import SAMPLES from '../config/samples';

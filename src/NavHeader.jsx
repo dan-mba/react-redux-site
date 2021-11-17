@@ -51,7 +51,7 @@ const useStyles = makeStyles({
 
 const menuItems = ['/', '/experience', '/education', '/code', '/contact'];
 
-function NavHeader({ dispatch, anchorEl, selectedIndex }) {
+export function NavHeader({ dispatch, anchorEl, selectedIndex }) {
   const location = useLocation();
   const classes = useStyles();
   useEffect(() => {

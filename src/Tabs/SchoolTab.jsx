@@ -6,8 +6,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Grid, Card, CardMedia, CardContent, Link, Typography, CardActions, withStyles }
-  from '@material-ui/core';
+import { Grid, Card, CardMedia, CardContent, Link, Typography, CardActions, withStyles } from '@material-ui/core';
 
 import butlerImg from '../img/ablsocialmediabadge_general.png';
 import purdueImg from '../img/engineering_logo.png';

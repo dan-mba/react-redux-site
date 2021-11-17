@@ -1,7 +1,7 @@
 /* eslint react/jsx-filename-extension: "off" */
 import React from 'react';
 import Enzyme, { shallow } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
+import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
 import { ContactTab } from './ContactTab';
 
 Enzyme.configure({ adapter: new Adapter() });
