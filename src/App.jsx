@@ -8,7 +8,7 @@
 
 import React from 'react';
 import { HashRouter as Router, Route, Routes } from 'react-router-dom';
-import { createMuiTheme, MuiThemeProvider } from '@material-ui/core';
+import { createTheme, MuiThemeProvider } from '@material-ui/core';
 import NavHeader from './NavHeader';
 import HomeTab from './Tabs/HomeTab';
 import SchoolTab from './Tabs/SchoolTab';
@@ -16,7 +16,7 @@ import ContactTab from './Tabs/ContactTab';
 import WorkTab from './Tabs/WorkTab';
 import CodeTab from './Tabs/CodeTab';
 
-const theme = createMuiTheme({
+const theme = createTheme({
   palette: {
     primary: {
       main: '#212121',

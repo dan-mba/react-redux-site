@@ -5,7 +5,7 @@
  * on all routes
  */
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link as RouterLink, useLocation } from 'react-router-dom';
@@ -54,6 +54,7 @@ const menuItems = ['/', '/experience', '/education', '/code', '/contact'];
 export function NavHeader({ dispatch, anchorEl, selectedIndex }) {
   const location = useLocation();
   const classes = useStyles();
+  const menuRef = useRef();
   useEffect(() => {
     dispatch(menuSelect(menuItems.indexOf(location.pathname) + 1));
   }, []);
@@ -74,7 +75,8 @@ export function NavHeader({ dispatch, anchorEl, selectedIndex }) {
           disableRipple
           className={classes.iconButton}
           classes={{ label: classes.buttonRoot }}
-          onClick={(event) => dispatch(menuOpen(event.currentTarget))}
+          onClick={() => dispatch(menuOpen(true))}
+          ref={menuRef}
         >
           <MenuIcon />
           <div className={classes.menuText}>Menu</div>
@@ -95,8 +97,8 @@ export function NavHeader({ dispatch, anchorEl, selectedIndex }) {
 
       <Menu
         id="menu-dropdown"
-        anchorEl={anchorEl}
-        open={Boolean(anchorEl)}
+        anchorEl={anchorEl ? menuRef.current : null}
+        open={anchorEl}
         onClose={() => dispatch(menuClose())}
       >
         <MenuItem
@@ -156,7 +158,7 @@ export function NavHeader({ dispatch, anchorEl, selectedIndex }) {
 
 NavHeader.propTypes = {
   dispatch: PropTypes.func.isRequired,
-  anchorEl: PropTypes.object,
+  anchorEl: PropTypes.bool,
   selectedIndex: PropTypes.number.isRequired,
 };
 

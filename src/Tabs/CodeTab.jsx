@@ -123,7 +123,7 @@ export class CodeTab extends React.Component {
         <Grid
           container
           spacing={5}
-          justify="center"
+          justifyContent="center"
         >
           {output}
         </Grid>

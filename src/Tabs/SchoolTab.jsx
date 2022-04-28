@@ -99,7 +99,7 @@ export const SchoolTab = ({ classes }) => (
     id="school-tab"
     container
     spacing={1}
-    justify="space-evenly"
+    justifyContent="space-evenly"
     className={classes.root}
   >
     <School

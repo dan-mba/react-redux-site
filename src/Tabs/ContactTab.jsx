@@ -50,7 +50,7 @@ export const ContactTab = ({ classes }) => (
     id="contact-tab"
     container
     spacing={1}
-    justify="center"
+    justifyContent="center"
     className={classes.root}
   >
     <Grid item sm={12} lg={11}>

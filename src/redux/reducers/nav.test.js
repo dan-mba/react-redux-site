@@ -3,7 +3,7 @@ import reducer from './nav';
 describe('nav reducer', () => {
   it('should return initial state', () => {
     expect(reducer(undefined, {})).toEqual({
-      anchorEl: null,
+      anchorEl: false,
       selectedIndex: 1,
     });
   });
@@ -23,7 +23,7 @@ describe('nav reducer', () => {
       type: 'nav/UPDATE_SELECTED',
       index: 3,
     })).toEqual({
-      anchorEl: null,
+      anchorEl: false,
       selectedIndex: 3,
     });
   });

@@ -4,13 +4,12 @@
  * combine the component reducers
  */
 
-import { combineReducers } from 'redux';
 import nav from './reducers/nav';
 import code from './reducers/code';
 
-const rootReducer = combineReducers({
+const rootReducer = {
   nav,
   code,
-});
+};
 
 export default rootReducer;
