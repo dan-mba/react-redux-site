@@ -8,9 +8,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Grid, Card, CardMedia, CardContent, Link, Typography, CardActions, withStyles } from '@material-ui/core';
 
-import butlerImg from '../img/ablsocialmediabadge_general.png';
-import purdueImg from '../img/engineering_logo.png';
-
 const styles = {
   root: {
     padding: '75px 0 10px',
@@ -108,7 +105,7 @@ export const SchoolTab = ({ classes }) => (
       degree="Master of Business Administration"
       subject="Finance"
       date="August 2008"
-      img={butlerImg}
+      img="/img/ablsocialmediabadge_general.png"
       errimg="https://www.butler.edu/sites/default/files/ablsocialmediabadge_general.png"
       link="https://www.butler.edu/mba"
       classes={classes}
@@ -119,7 +116,7 @@ export const SchoolTab = ({ classes }) => (
       degree="Bachelor of Science"
       subject="Computer Engineering"
       date="May 1997"
-      img={purdueImg}
+      img="/img/engineering_logo.png"
       errimg="https://engineering.purdue.edu/~prism/images/sm_logo.jpg"
       link="https://engineering.purdue.edu/ECE"
       classes={classes}

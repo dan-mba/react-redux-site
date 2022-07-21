@@ -32,7 +32,7 @@ const Job = ({ title, subtitle, employer, dates, image, errimg, description, det
           avatar={(
             <Avatar
               alt={title}
-              src={image.default}
+              src={`/img/${image}`}
               data-img={errimg}
               className={classes.avatar}
             />
@@ -104,7 +104,7 @@ Job.propTypes = {
   employer: PropTypes.string.isRequired,
   dates: PropTypes.string.isRequired,
   errimg: PropTypes.string.isRequired,
-  image: PropTypes.object.isRequired,
+  image: PropTypes.string.isRequired,
   details: PropTypes.array.isRequired,
   description: PropTypes.string.isRequired,
   classes: PropTypes.object.isRequired,
