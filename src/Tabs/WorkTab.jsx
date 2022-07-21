@@ -32,7 +32,7 @@ const Job = ({ title, subtitle, employer, dates, image, errimg, description, det
           avatar={(
             <Avatar
               alt={title}
-              src={`/img/${image}`}
+              src={`img/${image}`}
               data-img={errimg}
               className={classes.avatar}
             />

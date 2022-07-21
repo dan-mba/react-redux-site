@@ -105,7 +105,7 @@ export const SchoolTab = ({ classes }) => (
       degree="Master of Business Administration"
       subject="Finance"
       date="August 2008"
-      img="/img/ablsocialmediabadge_general.png"
+      img="img/ablsocialmediabadge_general.png"
       errimg="https://www.butler.edu/sites/default/files/ablsocialmediabadge_general.png"
       link="https://www.butler.edu/mba"
       classes={classes}
@@ -116,7 +116,7 @@ export const SchoolTab = ({ classes }) => (
       degree="Bachelor of Science"
       subject="Computer Engineering"
       date="May 1997"
-      img="/img/engineering_logo.png"
+      img="img/engineering_logo.png"
       errimg="https://engineering.purdue.edu/~prism/images/sm_logo.jpg"
       link="https://engineering.purdue.edu/ECE"
       classes={classes}

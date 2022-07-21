@@ -87,7 +87,7 @@ export function NavHeader({ dispatch, anchorEl, selectedIndex }) {
           target="_blank"
           rel="noreferrer noopener"
         >
-          <img src="/img/In-2CRev-34px-Rn.png" alt="LinkedIn" />
+          <img src="img/In-2CRev-34px-Rn.png" alt="LinkedIn" />
         </Link>
       </Toolbar>
 
