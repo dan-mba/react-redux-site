@@ -2,7 +2,7 @@
 /*
  * Tabs/WorkTab.js
  *
- * The WorlTab component is displayed on the /experience route
+ * The WorkTab component is displayed on the /experience route
  */
 
 import { useState } from 'react';

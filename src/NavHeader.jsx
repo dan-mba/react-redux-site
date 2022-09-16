@@ -5,7 +5,7 @@
  * on all routes
  */
 
-import React, { useEffect, useRef } from 'react';
+import { forwardRef, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link as RouterLink, useLocation } from 'react-router-dom';
@@ -49,11 +49,11 @@ const useStyles = makeStyles({
 
 const menuItems = ['/', '/experience', '/education', '/code', '/contact'];
 
-const homePage = React.forwardRef((props, ref) => <RouterLink to="/" {...props} ref={ref} />);
-const expPage = React.forwardRef((props, ref) => <RouterLink to="/experience" {...props} ref={ref} />);
-const eduPage = React.forwardRef((props, ref) => <RouterLink to="/education" {...props} ref={ref} />);
-const codePage = React.forwardRef((props, ref) => <RouterLink to="/code" {...props} ref={ref} />);
-const ctPage = React.forwardRef((props, ref) => <RouterLink to="/contact" {...props} ref={ref} />);
+const homePage = forwardRef((props, ref) => <RouterLink to="/" {...props} ref={ref} />);
+const expPage = forwardRef((props, ref) => <RouterLink to="/experience" {...props} ref={ref} />);
+const eduPage = forwardRef((props, ref) => <RouterLink to="/education" {...props} ref={ref} />);
+const codePage = forwardRef((props, ref) => <RouterLink to="/code" {...props} ref={ref} />);
+const ctPage = forwardRef((props, ref) => <RouterLink to="/contact" {...props} ref={ref} />);
 
 export function NavHeader({ dispatch, anchorEl, selectedIndex }) {
   const location = useLocation();

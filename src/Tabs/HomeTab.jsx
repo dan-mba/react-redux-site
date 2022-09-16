@@ -4,7 +4,6 @@
  * The HomeTab component is displayed on the / route
  */
 
-import React from 'react';
 import PropTypes from 'prop-types';
 import { Grid, Paper, Typography, Link, List, withStyles } from '@material-ui/core';
 import { LINoLink } from '../util/ListItems';

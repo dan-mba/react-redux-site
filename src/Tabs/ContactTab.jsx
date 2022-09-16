@@ -5,7 +5,6 @@
  * The ContactTab component is displayed on the /contact route
  */
 
-import React from 'react';
 import PropTypes from 'prop-types';
 import { Grid, Card, CardMedia, CardContent, CardActions, Chip, Link, Typography, withStyles } from '@material-ui/core';
 
