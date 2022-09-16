@@ -19,8 +19,6 @@ import CodeIcon from '@material-ui/icons/Code';
 import MessageIcon from '@material-ui/icons/Message';
 import { menuOpen, menuClose, menuSelect } from './redux/actions/nav';
 
-import liLogo from './img/In-2CRev-34px-Rn.png';
-
 const useStyles = makeStyles({
   appBar: {
     width: '100%',
@@ -97,7 +95,7 @@ export function NavHeader({ dispatch, anchorEl, selectedIndex }) {
           target="_blank"
           rel="noreferrer noopener"
         >
-          <img src={liLogo} alt="LinkedIn" />
+          <img src="img/In-2CRev-34px-Rn.png" alt="LinkedIn" />
         </Link>
       </Toolbar>
 

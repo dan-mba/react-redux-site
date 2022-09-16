@@ -5,7 +5,7 @@
  * The WorlTab component is displayed on the /experience route
  */
 
-import React, { useState } from 'react';
+import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Card, CardHeader, CardActions, CardContent, Collapse, IconButton,
   Typography, Avatar, Grid, List, withStyles } from '@material-ui/core';
@@ -32,7 +32,7 @@ const Job = ({ title, subtitle, employer, dates, image, errimg, description, det
           avatar={(
             <Avatar
               alt={title}
-              src={image.default}
+              src={`img/${image}`}
               data-img={errimg}
               className={classes.avatar}
             />

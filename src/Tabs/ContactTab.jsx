@@ -8,7 +8,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Grid, Card, CardMedia, CardContent, CardActions, Chip, Link, Typography, withStyles } from '@material-ui/core';
-import mapImg from '../img/map.png';
 
 const styles = {
   root: {
@@ -55,7 +54,7 @@ export const ContactTab = ({ classes }) => (
   >
     <Grid item sm={12} lg={11}>
       <Card className={classes.card}>
-        <CardMedia image={mapImg} className={classes.img} />
+        <CardMedia image="img/map.png" className={classes.img} />
         <CardContent>
           <Typography variant="body1" className={classes.body}>
             <span style={{ textAlign: 'center', display: 'block' }}>

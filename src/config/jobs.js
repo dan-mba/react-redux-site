@@ -1,5 +1,3 @@
-/* eslint global-require: 0  */
-
 export const JOBS = [
   {
     title: 'Private Consultant',
@@ -22,7 +20,7 @@ export const JOBS = [
       },
       'Work on QuickBase freelance projects providing application updates and administration.',
     ],
-    image: require('../img/code.png'),
+    image: 'code.png',
     errimg: 'https://cdn.pixabay.com/photo/2016/07/30/17/19/code-1557582_960_720.jpg',
   },
   {
@@ -59,7 +57,7 @@ export const JOBS = [
         ],
       },
     ],
-    image: require('../img/libramont34.png'),
+    image: 'libramont34.png',
     errimg: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/20140728_libramont34.JPG/320px-20140728_libramont34.JPG',
   },
   {
@@ -79,7 +77,7 @@ export const JOBS = [
       },
       'Installed, configured, and secured wireless home networks.',
     ],
-    image: require('../img/computer_pc.png'),
+    image: 'computer_pc.png',
     errimg: 'https://pngimg.com/uploads/computer_pc/computer_pc_PNG7706.png',
   },
   {
@@ -132,7 +130,7 @@ export const JOBS = [
         ],
       },
     ],
-    image: require('../img/chip_wafer.png'),
+    image: 'chip_wafer.png',
     errimg: 'https://c1.staticflickr.com/5/4289/35053537405_872707aaf2_q_d.jpg',
   },
   {
@@ -161,7 +159,7 @@ export const JOBS = [
         ],
       },
     ],
-    image: require('../img/mainframe_panel.png'),
+    image: 'mainframe_panel.png',
     errimg: 'https://www.ibm.com/blogs/systems/wp-content/uploads/2018/02/mainframe-panel-2.jpg',
   },
   {
@@ -192,7 +190,7 @@ export const JOBS = [
         ],
       },
     ],
-    image: require('../img/mainframe_repair.png'),
+    image: 'mainframe_repair.png',
     errimg: 'https://c1.staticflickr.com/5/4340/36367958994_811bd295fc_q_d.jpg',
   },
 ];
