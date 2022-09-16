@@ -93,6 +93,7 @@ School.propTypes = {
 export const SchoolTab = ({ classes }) => (
   <Grid
     id="school-tab"
+    data-testid="school-tab"
     container
     spacing={1}
     justifyContent="space-evenly"

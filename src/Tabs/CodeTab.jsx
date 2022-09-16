@@ -17,7 +17,7 @@ const showCode = (url) => {
 };
 
 /* Render array of sample apps */
-const CodeTab = ({ classes, theme, selected, libraries, samples, dispatch }) => {
+export const CodeTab = ({ classes, theme, selected, libraries, samples, dispatch }) => {
   let output = [];
   let sel = '';
 
@@ -102,7 +102,7 @@ const CodeTab = ({ classes, theme, selected, libraries, samples, dispatch }) => 
   );
 
   return (
-    <div className={classes.main} id="code-tab">
+    <div className={classes.main} id="code-tab" data-testid="code-tab">
       <Selection
         handleClick={handleSelect}
         selected={selected}
@@ -137,7 +137,7 @@ const Selection = ({ libraries, selected, classes, handleClick }) => {
   chips.push(
     <Chip
       key="all"
-      data-test="all"
+      data-testid="all"
       label="all"
       color="primary"
       variant={selected !== '' ? 'outlined' : 'default'}
@@ -149,7 +149,7 @@ const Selection = ({ libraries, selected, classes, handleClick }) => {
   chips.push(...Object.keys(libs).map((lib) => (
     <Chip
       key={lib}
-      data-test={lib}
+      data-testid={lib}
       label={libs[lib].name}
       color="primary"
       variant={selected !== lib ? 'outlined' : 'default'}

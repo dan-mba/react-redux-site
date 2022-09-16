@@ -46,6 +46,7 @@ const styles = {
 export const ContactTab = ({ classes }) => (
   <Grid
     id="contact-tab"
+    data-testid="contact-tab"
     container
     spacing={1}
     justifyContent="center"

@@ -1,33 +1,24 @@
 /* eslint react/jsx-filename-extension: "off" */
-import React from 'react';
-import Enzyme, { shallow } from 'enzyme';
-import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
+import '@testing-library/jest-dom';
+import { render, screen } from '@testing-library/react';
 import { ContactTab } from './ContactTab';
 
-Enzyme.configure({ adapter: new Adapter() });
-
-function setup() {
-  const props = {
-    classes: {
-      root: 'abc',
-      card: 'def',
-      body: 'ghi',
-      img: 'jkl',
-      content: 'mno',
-      chipBox: 'pqr',
-      chip: 'stu',
-      link: 'vwx',
-    },
-  };
-
-  const enzymeWrapper = shallow(<ContactTab {...props} />);
-
-  return { enzymeWrapper, props };
-}
+const props = {
+  classes: {
+    root: 'abc',
+    card: 'def',
+    body: 'ghi',
+    img: 'jkl',
+    content: 'mno',
+    chipBox: 'pqr',
+    chip: 'stu',
+    link: 'vwx',
+  },
+};
 
 describe('Contact Tab', () => {
   it('should render', () => {
-    const { enzymeWrapper } = setup();
-    expect(enzymeWrapper.find('#contact-tab').hasClass('abc')).toBe(true);
+    render(<ContactTab {...props} />);
+    expect(screen.getByTestId('contact-tab')).toHaveClass('abc');
   });
 });

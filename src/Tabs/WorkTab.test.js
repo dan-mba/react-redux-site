@@ -1,39 +1,31 @@
 /* eslint react/jsx-filename-extension: "off" */
-import React from 'react';
-import Enzyme, { mount } from 'enzyme';
-import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
+import '@testing-library/jest-dom';
+import { render, screen } from '@testing-library/react';
 import { WorkTab } from './WorkTab';
 
-Enzyme.configure({ adapter: new Adapter() });
 global.open = jest.fn();
 
-function setup() {
-  const props = {
-    classes: {
-      root: 'abc',
-      list: 'def',
-      avatar: 'ghi',
-      avatarRoot: 'jkl',
-      content: 'mno',
-      header: 'pqr',
-      title: 'stu',
-      subheader: 'vwx',
-      jobDescription: 'yza',
-      expand: 'bcd',
-      expandOpen: 'efg',
-    },
-    expanded: [false, false, false, false, false, true],
-    dispatch: jest.fn(),
-  };
-
-  const enzymeWrapper = mount(<WorkTab {...props} />);
-
-  return { enzymeWrapper, props };
-}
+const props = {
+  classes: {
+    root: 'abc',
+    list: 'def',
+    avatar: 'ghi',
+    avatarRoot: 'jkl',
+    content: 'mno',
+    header: 'pqr',
+    title: 'stu',
+    subheader: 'vwx',
+    jobDescription: 'yza',
+    expand: 'bcd',
+    expandOpen: 'efg',
+  },
+  expanded: [false, false, false, false, false, true],
+  dispatch: jest.fn(),
+};
 
 describe('Work Tab', () => {
   it('should render main Tab', () => {
-    const { enzymeWrapper } = setup();
-    expect(enzymeWrapper.find('#work-tab').first().hasClass('abc')).toBe(true);
+    render(<WorkTab {...props} />);
+    expect(screen.getByTestId('work-tab')).toHaveClass('abc');
   });
 });

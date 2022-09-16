@@ -1,10 +1,8 @@
 /* eslint react/jsx-filename-extension: "off" */
-import React from 'react';
-import Enzyme, { shallow } from 'enzyme';
-import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
+import '@testing-library/jest-dom';
+import { render } from '@testing-library/react';
 import { NavHeader } from './NavHeader';
 
-Enzyme.configure({ adapter: new Adapter() });
 global.open = jest.fn();
 
 jest.mock('react-router-dom', () => ({
@@ -34,7 +32,7 @@ const props = {
 
 describe('Nav Bar', () => {
   it('should render', () => {
-    shallow(<NavHeader {...props} />);
+    render(<NavHeader {...props} />);
 
     /*
     FUTURE: Implement test for menu items

@@ -114,7 +114,14 @@ Job.propTypes = {
 };
 
 export const WorkTab = ({ classes }) => (
-  <Grid container spacing={2} justifyContent="center" className={classes.root} id="work-tab">
+  <Grid
+    container
+    spacing={2}
+    justifyContent="center"
+    className={classes.root}
+    id="work-tab"
+    data-testid="work-tab"
+  >
     {JOBS.map((job, index) => <Job {...job} classes={classes} key={index} />)}
   </Grid>
 );

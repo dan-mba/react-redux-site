@@ -1,74 +1,62 @@
 /* eslint react/jsx-filename-extension: "off" */
-import React from 'react';
-import Enzyme, { mount } from 'enzyme';
-import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
+import '@testing-library/jest-dom';
+import { render, screen, fireEvent } from '@testing-library/react';
 import { CodeTab } from './CodeTab';
 import LIBRARIES from '../config/libraries';
 import SAMPLES from '../config/samples';
 
-Enzyme.configure({ adapter: new Adapter() });
 global.open = jest.fn();
 
-function setup() {
-  const props = {
-    classes: {
-      main: 'abc',
-      chip: 'def',
-      cardRoot: 'ghi',
-      headerRoot: 'jkl',
-      headerContent: 'mno',
-      cardContent: 'pqr',
-      actionRoot: 'stu',
-      selectors: 'vwx',
-      sel: 'yza',
-      selLink: 'bcd',
-    },
-    theme: {
-      palette: {
-        primary: {
-          main: '#fff',
-          contrastText: '#111',
-
-        },
+const props = {
+  classes: {
+    main: 'abc',
+    chip: 'def',
+    cardRoot: 'ghi',
+    headerRoot: 'jkl',
+    headerContent: 'mno',
+    cardContent: 'pqr',
+    actionRoot: 'stu',
+    selectors: 'vwx',
+    sel: 'yza',
+    selLink: 'bcd',
+  },
+  theme: {
+    palette: {
+      primary: {
+        main: '#fff',
+        contrastText: '#111',
       },
     },
-    selected: 'react',
-    libraries: LIBRARIES,
-    samples: SAMPLES,
-    dispatch: jest.fn(),
-  };
-
-  const enzymeWrapper = mount(<CodeTab {...props} />);
-
-  return { enzymeWrapper, props };
-}
+  },
+  selected: 'react',
+  libraries: LIBRARIES,
+  samples: SAMPLES,
+  dispatch: jest.fn(),
+};
 
 describe('Code Tab', () => {
   it('should render main Tab', () => {
-    const { enzymeWrapper, props } = setup();
-    expect(enzymeWrapper.find('#code-tab').hasClass('abc')).toBe(true);
+    render(<CodeTab {...props} />);
+    expect(screen.getByTestId('code-tab')).toHaveClass('abc');
 
     expect(props.dispatch.mock.calls.length).toBe(0);
-    enzymeWrapper.find('div[data-test="node"]').simulate('click');
+    fireEvent.click(screen.getByTestId('node'));
     expect(props.dispatch.mock.calls.length).toBe(1);
 
     props.dispatch.mockClear();
     expect(props.dispatch.mock.calls.length).toBe(0);
-    enzymeWrapper.find('div[data-test="all"]').simulate('click');
+    fireEvent.click(screen.getByTestId('all'));
     expect(props.dispatch.mock.calls.length).toBe(1);
 
-    let button = enzymeWrapper.find('button').filterWhere((n) => n.text() === 'App').first();
-    button.simulate('click');
+    fireEvent.click(screen.getAllByText('App')[0]);
     expect(window.open).toHaveBeenCalled();
 
     global.open.mockClear();
-    button = enzymeWrapper.find('button').filterWhere((n) => n.text() === 'Api').first();
-    button.simulate('click');
+    fireEvent.click(screen.getAllByText('Api')[0]);
     expect(window.open).toHaveBeenCalled();
 
     global.open.mockClear();
-    button = enzymeWrapper.find('button').filterWhere((n) => n.text() === 'Show Code').first();
-    button.simulate('click');
+    fireEvent.click(screen.getAllByText('Show Code')[0]);
     expect(window.open).toHaveBeenCalled();
   });
 });

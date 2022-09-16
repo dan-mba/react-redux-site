@@ -6,7 +6,6 @@
  * defines all the routes.
  */
 
-import React from 'react';
 import { HashRouter as Router, Route, Routes } from 'react-router-dom';
 import { createTheme, MuiThemeProvider } from '@material-ui/core';
 import NavHeader from './NavHeader';
