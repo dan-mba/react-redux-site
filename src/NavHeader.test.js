@@ -1,40 +1,38 @@
 /* eslint react/jsx-filename-extension: "off" */
-import React from 'react';
-import Enzyme, { mount } from 'enzyme';
-import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
+import '@testing-library/jest-dom';
+import { render } from '@testing-library/react';
 import { NavHeader } from './NavHeader';
 
-Enzyme.configure({ adapter: new Adapter() });
 global.open = jest.fn();
 
-function setup() {
-  const props = {
-    classes: {
-      appBar: 'abc',
-      toolbar: 'def',
-      linkedin: 'ghi',
-      name: 'jkl',
-      buttonRoot: 'mno',
-      iconButton: 'pqr',
-      menuText: 'stu',
-    },
-    location: {
-      pathname: '/',
-    },
-    anchorEl: null,
-    selectedIndex: 1,
-    dispatch: jest.fn(),
-  };
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  useLocation: () => ({
+    pathname: '/',
+  }),
+}));
 
-  const enzymeWrapper = mount(<NavHeader {...props} />);
-
-  return { enzymeWrapper, props };
-}
+const props = {
+  classes: {
+    appBar: 'abc',
+    toolbar: 'def',
+    linkedin: 'ghi',
+    name: 'jkl',
+    buttonRoot: 'mno',
+    iconButton: 'pqr',
+    menuText: 'stu',
+  },
+  location: {
+    pathname: '/',
+  },
+  anchorEl: false,
+  selectedIndex: 1,
+  dispatch: jest.fn(),
+};
 
 describe('Nav Bar', () => {
   it('should render', () => {
-    const { enzymeWrapper } = setup();
-    expect(enzymeWrapper.find('#nav-header').first().hasClass('abc')).toBe(true);
+    render(<NavHeader {...props} />);
 
     /*
     FUTURE: Implement test for menu items

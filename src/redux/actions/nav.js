@@ -11,7 +11,7 @@ export const menuOpen = (target) => (
 );
 
 export const menuClose = () => (
-  { type: 'nav/UPDATE_ANCHOR', anchor: null }
+  { type: 'nav/UPDATE_ANCHOR', anchor: false }
 );
 
 export const menuSelect = (index) => (dispatch) => {

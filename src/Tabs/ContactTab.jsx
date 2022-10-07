@@ -5,7 +5,6 @@
  * The ContactTab component is displayed on the /contact route
  */
 
-import React from 'react';
 import PropTypes from 'prop-types';
 import { Grid, Card, CardMedia, CardContent, CardActions, Chip, Link, Typography, withStyles } from '@material-ui/core';
 
@@ -47,9 +46,10 @@ const styles = {
 export const ContactTab = ({ classes }) => (
   <Grid
     id="contact-tab"
+    data-testid="contact-tab"
     container
     spacing={1}
-    justify="center"
+    justifyContent="center"
     className={classes.root}
   >
     <Grid item sm={12} lg={11}>

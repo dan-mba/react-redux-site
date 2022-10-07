@@ -4,7 +4,6 @@
  * The SchoolTab component is displayed on the /education route
  */
 
-import React from 'react';
 import PropTypes from 'prop-types';
 import { Grid, Card, CardMedia, CardContent, Link, Typography, CardActions, withStyles } from '@material-ui/core';
 
@@ -94,9 +93,10 @@ School.propTypes = {
 export const SchoolTab = ({ classes }) => (
   <Grid
     id="school-tab"
+    data-testid="school-tab"
     container
     spacing={1}
-    justify="space-evenly"
+    justifyContent="space-evenly"
     className={classes.root}
   >
     <School

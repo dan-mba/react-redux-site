@@ -1,10 +1,9 @@
 /*
  * util/gridItems.jsx
  *
- * components usied in a grid to replicate the behaviorof  material-ui ListItem component
+ * components used in a grid to replicate the behavior of  material-ui ListItem component
  */
 
-import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles, Link } from '@material-ui/core';
 import ArrowIcon from '@material-ui/icons/ArrowRightRounded';

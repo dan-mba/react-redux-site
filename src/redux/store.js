@@ -4,13 +4,11 @@
  * Initialize the Redux store & configure Thunk
  */
 
-import { applyMiddleware, legacy_createStore as createStore } from 'redux';
-import thunk from 'redux-thunk';
+import { configureStore } from '@reduxjs/toolkit';
 import rootReducer from './rootReducer';
 
-const store = createStore(
-  rootReducer,
-  applyMiddleware(thunk),
-);
+const store = configureStore({
+  reducer: rootReducer,
+});
 
 export default store;

@@ -2,10 +2,10 @@
 /*
  * Tabs/WorkTab.js
  *
- * The WorlTab component is displayed on the /experience route
+ * The WorkTab component is displayed on the /experience route
  */
 
-import React, { useState } from 'react';
+import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Card, CardHeader, CardActions, CardContent, Collapse, IconButton,
   Typography, Avatar, Grid, List, withStyles } from '@material-ui/core';
@@ -104,14 +104,24 @@ Job.propTypes = {
   employer: PropTypes.string.isRequired,
   dates: PropTypes.string.isRequired,
   errimg: PropTypes.string.isRequired,
-  image: PropTypes.string.isRequired,
+  image: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.string,
+  ]).isRequired,
   details: PropTypes.array.isRequired,
   description: PropTypes.string.isRequired,
   classes: PropTypes.object.isRequired,
 };
 
 export const WorkTab = ({ classes }) => (
-  <Grid container spacing={2} justify="center" className={classes.root} id="work-tab">
+  <Grid
+    container
+    spacing={2}
+    justifyContent="center"
+    className={classes.root}
+    id="work-tab"
+    data-testid="work-tab"
+  >
     {JOBS.map((job, index) => <Job {...job} classes={classes} key={index} />)}
   </Grid>
 );

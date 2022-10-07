@@ -4,7 +4,6 @@
  * The CodeTab component is displayed on the /code route
  */
 
-import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Chip, Card, CardHeader, CardContent, CardActions, Typography,
@@ -18,119 +17,109 @@ const showCode = (url) => {
 };
 
 /* Render array of sample apps */
-export class CodeTab extends React.Component {
-  constructor(props) {
-    super(props);
+export const CodeTab = ({ classes, theme, selected, libraries, samples, dispatch }) => {
+  let output = [];
+  let sel = '';
 
-    this.handleSelect = this.handleSelect.bind(this);
-  }
+  const handleSelect = (value) => {
+    dispatch(selectCode(value));
+  };
 
-  handleSelect(selected) {
-    const { dispatch } = this.props;
-    dispatch(selectCode(selected));
-  }
+  const headerClass = {
+    backgroundColor: theme.palette.primary.main,
+    color: theme.palette.primary.contrastText,
+  };
 
-  render() {
-    let output = [];
-    let sel = '';
-    const { classes, theme, selected, libraries, samples } = this.props;
-
-    const headerClass = {
-      backgroundColor: theme.palette.primary.main,
-      color: theme.palette.primary.contrastText,
-    };
-
-    if (selected !== '') {
-      output = samples.filter((samp) => (
-        samp.libraries.indexOf(selected) >= 0
-      ));
-    } else {
-      output = samples;
-    }
-
-    output = output.map((samp) => (
-      <Grid item sm={12} lg={6} key={samp.title}>
-        <Card className={classes.cardRoot}>
-          <CardHeader
-            title={samp.title}
-            titleTypographyProps={{ color: 'inherit' }}
-            classes={{
-              root: classes.headerRoot,
-              content: classes.headerContent,
-            }}
-            style={headerClass}
-          />
-          <CardContent classes={{ root: classes.cardContent }}>
-            <Typography variant="body1">
-              {samp.description}
-            </Typography>
-          </CardContent>
-          <CardActions className={classes.actionRoot}>
-            <Button
-              size="small"
-              variant="contained"
-              onClick={() => showCode(samp.url)}
-            >
-              App
-            </Button>
-            {!samp.apiname ? ''
-              : (
-                <Button
-                  size="small"
-                  variant="contained"
-                  onClick={() => showCode(samp.apisite)}
-                >
-                  Api
-                </Button>
-              )}
-            <Button
-              size="small"
-              variant="contained"
-              onClick={() => showCode(samp.source)}
-            >
-              Show Code
-            </Button>
-          </CardActions>
-        </Card>
-      </Grid>
+  if (selected !== '') {
+    output = samples.filter((samp) => (
+      samp.libraries.indexOf(selected) >= 0
     ));
-
-    sel = (
-      <div className={classes.sel}>
-        { selected === '' ? ''
-          : (
-            <a
-              href={libraries[selected].site}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={classes.selLink}
-            >
-              {libraries[selected].name}
-            </a>
-          )}
-      </div>
-    );
-
-    return (
-      <div className={classes.main} id="code-tab">
-        <Selection
-          handleClick={this.handleSelect}
-          selected={selected}
-          libraries={libraries}
-          classes={classes}
-        />
-        {sel}
-        <Grid
-          container
-          spacing={5}
-          justify="center"
-        >
-          {output}
-        </Grid>
-      </div>
-    );
+  } else {
+    output = samples;
   }
-}
+
+  output = output.map((samp) => (
+    <Grid item sm={12} lg={6} key={samp.title}>
+      <Card className={classes.cardRoot}>
+        <CardHeader
+          title={samp.title}
+          titleTypographyProps={{ color: 'inherit' }}
+          classes={{
+            root: classes.headerRoot,
+            content: classes.headerContent,
+          }}
+          style={headerClass}
+        />
+        <CardContent classes={{ root: classes.cardContent }}>
+          <Typography variant="body1">
+            {samp.description}
+          </Typography>
+        </CardContent>
+        <CardActions className={classes.actionRoot}>
+          <Button
+            size="small"
+            variant="contained"
+            onClick={() => showCode(samp.url)}
+          >
+            App
+          </Button>
+          {!samp.apiname ? ''
+            : (
+              <Button
+                size="small"
+                variant="contained"
+                onClick={() => showCode(samp.apisite)}
+              >
+                Api
+              </Button>
+            )}
+          <Button
+            size="small"
+            variant="contained"
+            onClick={() => showCode(samp.source)}
+          >
+            Show Code
+          </Button>
+        </CardActions>
+      </Card>
+    </Grid>
+  ));
+
+  sel = (
+    <div className={classes.sel}>
+      { selected === '' ? ''
+        : (
+          <a
+            href={libraries[selected].site}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={classes.selLink}
+          >
+            {libraries[selected].name}
+          </a>
+        )}
+    </div>
+  );
+
+  return (
+    <div className={classes.main} id="code-tab" data-testid="code-tab">
+      <Selection
+        handleClick={handleSelect}
+        selected={selected}
+        libraries={libraries}
+        classes={classes}
+      />
+      {sel}
+      <Grid
+        container
+        spacing={5}
+        justifyContent="center"
+      >
+        {output}
+      </Grid>
+    </div>
+  );
+};
 
 CodeTab.propTypes = {
   classes: PropTypes.object.isRequired,
@@ -148,7 +137,7 @@ const Selection = ({ libraries, selected, classes, handleClick }) => {
   chips.push(
     <Chip
       key="all"
-      data-test="all"
+      data-testid="all"
       label="all"
       color="primary"
       variant={selected !== '' ? 'outlined' : 'default'}
@@ -160,7 +149,7 @@ const Selection = ({ libraries, selected, classes, handleClick }) => {
   chips.push(...Object.keys(libs).map((lib) => (
     <Chip
       key={lib}
-      data-test={lib}
+      data-testid={lib}
       label={libs[lib].name}
       color="primary"
       variant={selected !== lib ? 'outlined' : 'default'}

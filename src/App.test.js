@@ -5,18 +5,17 @@
  * The file renders the main App component wrapped by the Redux store
  */
 
-import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
 import App from './App';
 import store from './redux/store';
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
-  ReactDOM.render(
+  const root = createRoot(div);
+  root.render(
     <Provider store={store}>
       <App />
     </Provider>,
-    div,
   );
 });

@@ -5,7 +5,7 @@
  * on all routes
  */
 
-import React, { useEffect } from 'react';
+import { forwardRef, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link as RouterLink, useLocation } from 'react-router-dom';
@@ -49,9 +49,16 @@ const useStyles = makeStyles({
 
 const menuItems = ['/', '/experience', '/education', '/code', '/contact'];
 
+const homePage = forwardRef((props, ref) => <RouterLink to="/" {...props} ref={ref} />);
+const expPage = forwardRef((props, ref) => <RouterLink to="/experience" {...props} ref={ref} />);
+const eduPage = forwardRef((props, ref) => <RouterLink to="/education" {...props} ref={ref} />);
+const codePage = forwardRef((props, ref) => <RouterLink to="/code" {...props} ref={ref} />);
+const ctPage = forwardRef((props, ref) => <RouterLink to="/contact" {...props} ref={ref} />);
+
 export function NavHeader({ dispatch, anchorEl, selectedIndex }) {
   const location = useLocation();
   const classes = useStyles();
+  const menuRef = useRef();
   useEffect(() => {
     dispatch(menuSelect(menuItems.indexOf(location.pathname) + 1));
   }, []);
@@ -72,7 +79,8 @@ export function NavHeader({ dispatch, anchorEl, selectedIndex }) {
           disableRipple
           className={classes.iconButton}
           classes={{ label: classes.buttonRoot }}
-          onClick={(event) => dispatch(menuOpen(event.currentTarget))}
+          onClick={() => dispatch(menuOpen(true))}
+          ref={menuRef}
         >
           <MenuIcon />
           <div className={classes.menuText}>Menu</div>
@@ -93,13 +101,13 @@ export function NavHeader({ dispatch, anchorEl, selectedIndex }) {
 
       <Menu
         id="menu-dropdown"
-        anchorEl={anchorEl}
-        open={Boolean(anchorEl)}
+        anchorEl={anchorEl ? menuRef.current : null}
+        open={anchorEl}
         onClose={() => dispatch(menuClose())}
       >
         <MenuItem
           onClick={() => dispatch(menuSelect(1))}
-          component={React.forwardRef((props, ref) => <RouterLink to="/" {...props} ref={ref} />)}
+          component={homePage}
           selected={selectedIndex === 1}
         >
           <ListItemIcon>
@@ -109,7 +117,7 @@ export function NavHeader({ dispatch, anchorEl, selectedIndex }) {
         </MenuItem>
         <MenuItem
           onClick={() => dispatch(menuSelect(2))}
-          component={React.forwardRef((props, ref) => <RouterLink to="/experience" {...props} ref={ref} />)}
+          component={expPage}
           selected={selectedIndex === 2}
         >
           <ListItemIcon>
@@ -119,7 +127,7 @@ export function NavHeader({ dispatch, anchorEl, selectedIndex }) {
         </MenuItem>
         <MenuItem
           onClick={() => dispatch(menuSelect(3))}
-          component={React.forwardRef((props, ref) => <RouterLink to="/education" {...props} ref={ref} />)}
+          component={eduPage}
           selected={selectedIndex === 3}
         >
           <ListItemIcon>
@@ -129,7 +137,7 @@ export function NavHeader({ dispatch, anchorEl, selectedIndex }) {
         </MenuItem>
         <MenuItem
           onClick={() => dispatch(menuSelect(4))}
-          component={React.forwardRef((props, ref) => <RouterLink to="/code" {...props} ref={ref} />)}
+          component={codePage}
           selected={selectedIndex === 4}
         >
           <ListItemIcon>
@@ -139,7 +147,7 @@ export function NavHeader({ dispatch, anchorEl, selectedIndex }) {
         </MenuItem>
         <MenuItem
           onClick={() => dispatch(menuSelect(5))}
-          component={React.forwardRef((props, ref) => <RouterLink to="/contact" {...props} ref={ref} />)}
+          component={ctPage}
           selected={selectedIndex === 5}
         >
           <ListItemIcon>
@@ -154,7 +162,7 @@ export function NavHeader({ dispatch, anchorEl, selectedIndex }) {
 
 NavHeader.propTypes = {
   dispatch: PropTypes.func.isRequired,
-  anchorEl: PropTypes.object,
+  anchorEl: PropTypes.bool,
   selectedIndex: PropTypes.number.isRequired,
 };
 

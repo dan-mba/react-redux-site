@@ -4,7 +4,6 @@
  * The HomeTab component is displayed on the / route
  */
 
-import React from 'react';
 import PropTypes from 'prop-types';
 import { Grid, Paper, Typography, Link, List, withStyles } from '@material-ui/core';
 import { LINoLink } from '../util/ListItems';
@@ -23,7 +22,7 @@ const styles = {
   body: {
     padding: '10px 0',
   },
-  seperator: {
+  separator: {
     marginBottom: '20px',
   },
 };
@@ -32,7 +31,7 @@ const HomeTab = ({ classes }) => (
   <Grid
     container
     spacing={1}
-    justify="center"
+    justifyContent="center"
     className={classes.root}
   >
     <Grid item sm={12} lg={11}>
@@ -56,7 +55,7 @@ const HomeTab = ({ classes }) => (
             my MBA allows me to provide solutions that meet business and technical needs.
           </LINoLink>
         </List>
-        <Grid container justify="space-between" className={classes.seperator}>
+        <Grid container justifyContent="space-between" className={classes.separator}>
           {
             ['Willing to Learn', 'Problem Solver', 'Logical Thinker',
               'Collaborative', 'Enjoys New Challenges', 'Analytical',
@@ -72,7 +71,7 @@ const HomeTab = ({ classes }) => (
         <Typography variant="body1" className={classes.body} align="center">
           This website was built using the following tools and Javascript libraries:
         </Typography>
-        <Grid container justify="space-between">
+        <Grid container justifyContent="space-between">
           {
             TOOLS.map((tool, index) => (
               <Grid item sm={index % 2 === 0 ? 7 : 5} lg={4} key={tool.name}>

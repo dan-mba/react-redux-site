@@ -4,7 +4,6 @@
  * a collection of components wrapping the material-ui ListItem component
  */
 
-import React from 'react';
 import PropTypes from 'prop-types';
 import { ListItem, ListItemIcon, ListItemText, Link, makeStyles } from '@material-ui/core';
 import ArrowIcon from '@material-ui/icons/ArrowRightRounded';
